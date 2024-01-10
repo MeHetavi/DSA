@@ -19,7 +19,7 @@ def buildTree(inorder : list[int], postorder:list[int]):
           root.left = buildTree(left,postorder[len(right)+1:])    
       return root
 
-  def buildTree(inorder: list[int],preorder: list[int]) :
+  def buildTree1(inorder: list[int],preorder: list[int]) :
           root = TreeNode(val = preorder[0])
           if len(inorder) == 1:
               return root
@@ -28,9 +28,9 @@ def buildTree(inorder : list[int], postorder:list[int]):
               left = inorder[:i]
               right = inorder[i+1:]
               if left != [] :
-                  root.left = buildTree(left,preorder[1:len(left)+1])
+                  root.left = buildTree1(left,preorder[1:len(left)+1])
               if right != []: 
-                  root.right = buildTree(right,preorder[len(left)+1:])    
+                  root.right = buildTree1(right,preorder[len(left)+1:])    
               return root
 def createTree(temp):
     root = TreeNode(temp)
@@ -44,3 +44,28 @@ def createTree(temp):
         root.right = createTree(temp)
 
     return root
+
+def bfs(root): # Breadth first search(Lever order Traversal).
+    queue = [root,None]
+    while queue != [] :
+        root = queue[0]
+        queue.pop(0)
+        if root == None:
+            print(' ')
+            if queue != []:
+                queue.append(None)
+        else:
+            print(root.val,' ',end='')
+            if root.left is not None:
+                queue += [root.left]
+            if root.right is not None:
+                queue += [root.right]
+
+def dfs(root): # Depth first search.
+    if root is None:
+        return
+    print(root.val)
+
+    dfs(root.left)
+    dfs(root.right)
+
