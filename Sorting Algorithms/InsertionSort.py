@@ -8,3 +8,5 @@ def insertionSort(self, arr):
                 arr[i], arr[i-1] = arr[i-1], arr[i] 
                 i-=1
     return arr
+
+# Reccursive.

@@ -15,3 +15,7 @@ def bubbleSort(arr):
     return arr
 
 print(bubbleSort([4,1,3,9,7]))
+
+# Reccursive 
+def bs(arr):
+    ...
